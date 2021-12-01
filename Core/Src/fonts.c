@@ -9,7 +9,6 @@
 //
 //  Font data for Courier New 12pt
 //
-
 const uint8_t Font_Table[] = {
 // 1 row = abcdefg(dt) [0b00000000]
 		//Expects 10(digits) + 24(chars) + 1(_)
@@ -50,7 +49,31 @@ const uint8_t Font_Table[] = {
 		0x3B, // Y
 		0xDA, // Z*
 		0x10, // _
-
-
 		};
 
+SegmentDigitStruct GetSegmentDigit(uint8_t chr) {
+	SegmentDigitStruct result;
+	if ((chr >= '0' && chr <= '9') || (chr >= 'A' && chr <= 'Z')
+			|| chr == '_') {
+		uint8_t fontChar = 0;
+		uint8_t index = 0;
+		if (chr >= '0' && chr <= '9') {
+			index = chr - '0';
+			fontChar = Font_Table[FONTS_DIGITS_START + index];
+		} else if (chr >= 'A' && chr <= 'Z') {
+			index = chr - 'A';
+			fontChar = Font_Table[FONTS_CHARS_START + index];
+		} else if (chr == '_') {
+			fontChar = Font_Table[FONTS_UNDERSCORE];
+		}
+		result.sA = fontChar & ConverterValue_SegmentA ? true : false;
+		result.sB = fontChar & ConverterValue_SegmentB ? true : false;
+		result.sC = fontChar & ConverterValue_SegmentC ? true : false;
+		result.sD = fontChar & ConverterValue_SegmentD ? true : false;
+		result.sE = fontChar & ConverterValue_SegmentE ? true : false;
+		result.sF = fontChar & ConverterValue_SegmentF ? true : false;
+		result.sG = fontChar & ConverterValue_SegmentG ? true : false;
+		result.sDot = fontChar & ConverterValue_SegmentDot ? true : false;
+	}
+	return result;
+}
