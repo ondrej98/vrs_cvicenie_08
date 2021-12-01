@@ -32,9 +32,9 @@ const uint8_t Font_Table[] = {
 		0x37, // H
 		0x06, // I
 		0x3C, // J
-		0xAE, // K*
+		0x57, // K*
 		0x0E, // L
-		0xD4, // M*
+		0x6A, // M*
 		0x15, // N
 		0x1D, // o
 		0x67, // P
@@ -43,12 +43,12 @@ const uint8_t Font_Table[] = {
 		0x5B, // S
 		0x0F, // T
 		0x3E, // U
-		0x54, // V*
-		0x7E, // W*
-		0x92, // X*
+		0x2A, // V*
+		0x3F, // W*
+		0x49, // X*
 		0x3B, // Y
-		0xDA, // Z*
-		0x10, // _
+		0x6D, // Z*
+		0x08, // _
 		};
 
 SegmentDigitStruct GetSegmentDigit(uint8_t chr) {
