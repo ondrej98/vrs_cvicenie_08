@@ -22,8 +22,8 @@ const uint8_t ConverterValue_SegmentG = 0b00000001;
 const uint8_t ConverterValue_SegmentDot = 0b10000000;
 
 typedef enum{
-	false = 0b0,
-	true = 0b1
+	false = 0,
+	true = 1
 }bool;
 
 typedef struct{
