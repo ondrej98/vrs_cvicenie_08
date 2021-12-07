@@ -96,6 +96,8 @@ void Error_Handler(void);
 #define S_E_GPIO_Port GPIOA
 #define S_G_Pin LL_GPIO_PIN_4
 #define S_G_GPIO_Port GPIOB
+#define S_D_Pin LL_GPIO_PIN_5
+#define S_D_GPIO_Port GPIOB
 #ifndef NVIC_PRIORITYGROUP_0
 #define NVIC_PRIORITYGROUP_0         ((uint32_t)0x00000007) /*!< 0 bit  for pre-emption priority,
                                                                  4 bits for subpriority */

@@ -48,7 +48,7 @@ void MX_GPIO_Init(void)
                           |S_C_Pin|S_E_Pin);
 
   /**/
-  LL_GPIO_ResetOutputPin(GPIOB, S_DP_Pin|S_G_Pin);
+  LL_GPIO_ResetOutputPin(GPIOB, S_DP_Pin|S_G_Pin|S_D_Pin);
 
   /**/
   GPIO_InitStruct.Pin = S_B_Pin|S_A_Pin|D_3_Pin|S_F_Pin
@@ -61,7 +61,7 @@ void MX_GPIO_Init(void)
   LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /**/
-  GPIO_InitStruct.Pin = S_DP_Pin|S_G_Pin;
+  GPIO_InitStruct.Pin = S_DP_Pin|S_G_Pin|S_D_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
