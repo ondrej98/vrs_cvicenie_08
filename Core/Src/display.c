@@ -11,7 +11,7 @@ extern DisplayDigitData_ DisplayDigit_0;
 extern DisplayDigitData_ DisplayDigit_1;
 extern DisplayDigitData_ DisplayDigit_2;
 extern DisplayDigitData_ DisplayDigit_3;
-
+static uint8_t indexer = 0;
 void resetSegments(void) {
 	SEGMENT_A_OFF;
 	SEGMENT_B_OFF;
@@ -51,23 +51,31 @@ void setDigits(void) {
 }
 
 void segmentsOn(uint8_t index, SegmentDigitStruct digitStruct) {
-	resetSegments();
+//	resetSegments();
 	if (digitStruct.sA)
 		SEGMENT_A_ON;
+	else SEGMENT_A_OFF;
 	if (digitStruct.sB)
 		SEGMENT_B_ON;
+	else SEGMENT_B_OFF;
 	if (digitStruct.sC)
 		SEGMENT_C_ON;
+	else SEGMENT_C_OFF;
 	if (digitStruct.sD)
 		SEGMENT_D_ON;
+	else SEGMENT_D_OFF;
 	if (digitStruct.sE)
 		SEGMENT_E_ON;
+	else SEGMENT_E_OFF;
 	if (digitStruct.sF)
 		SEGMENT_F_ON;
+	else SEGMENT_F_OFF;
 	if (digitStruct.sG)
 		SEGMENT_G_ON;
+	else SEGMENT_G_OFF;
 	if (digitStruct.sDot)
 		SEGMENT_DP_ON;
+	else SEGMENT_DP_OFF;
 
 	resetDigits();
 	if (index == 0)
@@ -85,14 +93,29 @@ void displayCharOnDigit(DisplayDigitData_ digitData) {
 	segmentsOn(digitData.index, digitStruct);
 }
 void updateDisplay(void) {
-	displayCharOnDigit(DisplayDigit_0);
-	LL_mDelay(5);
-	displayCharOnDigit(DisplayDigit_1);
-	LL_mDelay(5);
-	displayCharOnDigit(DisplayDigit_2);
-	LL_mDelay(5);
-	displayCharOnDigit(DisplayDigit_3);
-	LL_mDelay(5);
-	resetDigits();
-	resetSegments();
+
+	switch (indexer) {
+	default:
+		resetDigits();
+		resetSegments();
+		indexer = 0;
+		break;
+	case 0:
+		displayCharOnDigit(DisplayDigit_0);
+		indexer++;
+		break;
+	case 1:
+		displayCharOnDigit(DisplayDigit_1);
+		indexer++;
+		break;
+	case 2:
+		displayCharOnDigit(DisplayDigit_2);
+		indexer++;
+		break;
+	case 3:
+		displayCharOnDigit(DisplayDigit_3);
+		indexer++;
+		break;
+
+	}
 }

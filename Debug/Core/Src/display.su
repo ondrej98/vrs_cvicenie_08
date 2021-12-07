@@ -5,5 +5,5 @@ display.c:26:6:setSegments	8	static
 display.c:37:6:resetDigits	8	static
 display.c:45:6:setDigits	8	static
 display.c:53:6:segmentsOn	24	static
-display.c:83:6:displayCharOnDigit	24	static
-display.c:87:6:updateDisplay	8	static
+display.c:91:6:displayCharOnDigit	24	static
+display.c:95:6:updateDisplay	8	static

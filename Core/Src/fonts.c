@@ -21,16 +21,16 @@ const uint8_t ConverterValue_SegmentDot = 0b10000000;
 const uint8_t Font_Table[] = {
 // 1 row = abcdefg(dt) [0b00000000]
 		//Expects 10(digits) + 24(chars) + 1(_)
-		0xC0,// 0
-		0xF9, // 1
-		0xA4, // 2
-		0xB0, // 3
-		0x99, // 4
-		0x92, // 5
-		0x82, // 6
-		0xF8, // 7
-		0x80, // 8
-		0x90, // 9
+		0x7E,// 0
+		0x30, // 1
+		0x6D, // 2
+		0x79, // 3
+		0x33, // 4
+		0x5B, // 5
+		0x5F, // 6
+		0x70, // 7
+		0x7F, // 8
+		0x7B, // 9
 		0x77, // A
 		0x1F, // b
 		0x4E, // C
@@ -83,6 +83,16 @@ SegmentDigitStruct GetSegmentDigit(uint8_t chr) {
 		result.sF = fontChar & ConverterValue_SegmentF ? true : false;
 		result.sG = fontChar & ConverterValue_SegmentG ? true : false;
 		result.sDot = fontChar & ConverterValue_SegmentDot ? true : false;
+	}
+	else{
+		result.sA = true;
+		result.sB = true;
+		result.sC = true;
+		result.sD = true;
+		result.sE = true;
+		result.sF = true;
+		result.sG = true;
+		result.sDot = true;
 	}
 	return result;
 }
