@@ -84,3 +84,15 @@ void displayCharOnDigit(DisplayDigitData_ digitData) {
 	SegmentDigitStruct digitStruct = GetSegmentDigit(digitData.chr);
 	segmentsOn(digitData.index, digitStruct);
 }
+void updateDisplay(void) {
+	displayCharOnDigit(DisplayDigit_0);
+	LL_mDelay(5);
+	displayCharOnDigit(DisplayDigit_1);
+	LL_mDelay(5);
+	displayCharOnDigit(DisplayDigit_2);
+	LL_mDelay(5);
+	displayCharOnDigit(DisplayDigit_3);
+	LL_mDelay(5);
+	resetDigits();
+	resetSegments();
+}

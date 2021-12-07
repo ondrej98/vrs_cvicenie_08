@@ -117,6 +117,16 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
+		LL_mDelay(2000);
+		DisplayDigit_0.chr = 'A';
+		DisplayDigit_1.chr = '0';
+		DisplayDigit_2.chr = '_';
+		DisplayDigit_3.chr = 'K';
+		LL_mDelay(2000);
+		DisplayDigit_0.chr = '9';
+		DisplayDigit_1.chr = 'X';
+		DisplayDigit_2.chr = '_';
+		DisplayDigit_3.chr = '0';
 	}
 	/* USER CODE END 3 */
 }

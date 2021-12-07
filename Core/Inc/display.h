@@ -61,4 +61,5 @@ DisplayDigitData_ DisplayDigit_1;
 DisplayDigitData_ DisplayDigit_2;
 DisplayDigitData_ DisplayDigit_3;
 
+void updateDisplay(void);
 #endif /* INC_DISPLAY_H_ */
