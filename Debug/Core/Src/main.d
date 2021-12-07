@@ -16,8 +16,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_dma.h \
  ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_tim.h \
  ../Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_gpio.h \
- ../Core/Inc/tim.h ../Core/Inc/main.h ../Core/Inc/gpio.h \
- ../Core/Inc/fonts.h ../Core/Inc/display.h ../Core/Inc/fonts.h
+ ../Core/Inc/tim.h ../Core/Inc/main.h ../Core/Inc/fonts.h \
+ ../Core/Inc/gpio.h ../Core/Inc/fonts.h ../Core/Inc/display.h
 
 ../Core/Inc/main.h:
 
@@ -59,10 +59,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Core/Inc/main.h:
 
+../Core/Inc/fonts.h:
+
 ../Core/Inc/gpio.h:
 
 ../Core/Inc/fonts.h:
 
 ../Core/Inc/display.h:
-
-../Core/Inc/fonts.h:

@@ -49,6 +49,7 @@ extern DisplayDigitData_ DisplayDigit_0;
 extern DisplayDigitData_ DisplayDigit_1;
 extern DisplayDigitData_ DisplayDigit_2;
 extern DisplayDigitData_ DisplayDigit_3;
+extern bool nextStringSequence;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -76,6 +77,8 @@ int main(void) {
 	DisplayDigit_2.chr = 0;
 	DisplayDigit_3.index = 3;
 	DisplayDigit_3.chr = 0;
+	nextStringSequence = false;
+	Direction_ direction = Direction_DownUp;
 	/* USER CODE END 1 */
 
 	/* MCU Configuration--------------------------------------------------------*/
@@ -108,7 +111,9 @@ int main(void) {
 	MX_TIM6_Init();
 	MX_TIM7_Init();
 	/* USER CODE BEGIN 2 */
-
+	uint8_t index = 0;
+	uint8_t string[] = "ONDREJ_DURMIS_98324";
+	uint8_t lenString = 19;
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -117,16 +122,25 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-		LL_mDelay(10000);
-		DisplayDigit_0.chr = 'A';
-		DisplayDigit_1.chr = '0';
-		DisplayDigit_2.chr = '_';
-		DisplayDigit_3.chr = 'K';
-		LL_mDelay(10000);
-		DisplayDigit_0.chr = '9';
-		DisplayDigit_1.chr = 'X';
-		DisplayDigit_2.chr = '_';
-		DisplayDigit_3.chr = '0';
+
+		if (nextStringSequence) {
+			nextStringSequence = false;
+			displayString(index, string, lenString);
+			if (index + STR_DISP_LEN < lenString
+					&& direction == Direction_DownUp) {
+				index++;
+			} else if (index + STR_DISP_LEN >= lenString
+					&& direction == Direction_DownUp) {
+				direction = Direction_UpDown;
+			}
+
+			if (index > 0 && direction == Direction_UpDown) {
+				index--;
+			} else if (index == 0 && direction == Direction_UpDown) {
+				direction = Direction_DownUp;
+			}
+		}
+
 	}
 	/* USER CODE END 3 */
 }
@@ -135,6 +149,7 @@ int main(void) {
  * @brief System Clock Configuration
  * @retval None
  */
+
 void SystemClock_Config(void) {
 	LL_FLASH_SetLatency(LL_FLASH_LATENCY_0);
 	while (LL_FLASH_GetLatency() != LL_FLASH_LATENCY_0) {
@@ -160,7 +175,20 @@ void SystemClock_Config(void) {
 }
 
 /* USER CODE BEGIN 4 */
+uint8_t displayString(uint8_t index, uint8_t *str, uint8_t length) {
+	uint8_t result = 0;
+	if (index + STR_DISP_LEN <= length) {
+		uint8_t dispStr[STR_DISP_LEN] = { 0 };
+		memcpy(dispStr, str + index, STR_DISP_LEN);
+		result = index + STR_DISP_LEN;
+		DisplayDigit_0.chr = dispStr[0];
+		DisplayDigit_1.chr = dispStr[1];
+		DisplayDigit_2.chr = dispStr[2];
+		DisplayDigit_3.chr = dispStr[3];
 
+	}
+	return result;
+}
 /* USER CODE END 4 */
 
 /**

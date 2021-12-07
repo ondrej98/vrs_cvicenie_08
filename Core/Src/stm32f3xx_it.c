@@ -23,8 +23,10 @@
 #include "stm32f3xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-/* USER CODE END Includes */
 #include "display.h"
+#include "tim.h"
+/* USER CODE END Includes */
+
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
 
@@ -42,7 +44,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+extern bool nextStringSequence;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -206,7 +208,9 @@ void TIM6_DAC1_IRQHandler(void) {
  */
 void TIM7_DAC2_IRQHandler(void) {
 	/* USER CODE BEGIN TIM7_DAC2_IRQn 0 */
-
+	if (LL_TIM_IsActiveFlag_UPDATE(TIM7)) {
+		nextStringSequence = true;
+	}
 	/* USER CODE END TIM7_DAC2_IRQn 0 */
 
 	/* USER CODE BEGIN TIM7_DAC2_IRQn 1 */
